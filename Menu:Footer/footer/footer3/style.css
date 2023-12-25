@@ -1,0 +1,33 @@
+div {
+    font-family: Arial;
+  }
+  
+  #footer3 {
+    height: 200px;  
+    background-color: #F4DECB;
+  }
+  #footer3 section {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #94618E;
+    color: #F8EEE7;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+  #footer3 footer {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #49274A;
+    color: #94618E;
+    padding: 5px 30px;
+    text-align: center;
+  }
+  #footer3 a {
+    color: #FFFFFF;
+  }
+  #footer3 a:hover {
+    color: #F4DECB;
+  }
+  
