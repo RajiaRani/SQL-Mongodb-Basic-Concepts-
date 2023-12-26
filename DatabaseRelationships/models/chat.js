@@ -1,0 +1,68 @@
+const mongoose = require("mongoose");
+const {Schema} = mongoose;
+main()
+.then(() => console.log("connection successfull"))
+.catch((err) => console.log(err));
+
+async function main() {
+    await mongoose.connect("mongodb://127.0.0.1:27017/relationDemo");
+};
+
+
+const fromSchema = new Schema ({
+    name:String,
+
+});
+const receiveSchema = new Schema ({
+    receiveName:String,
+    message:String,
+    from:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "From",
+        }],
+});
+
+const From = mongoose.model("From", fromSchema);
+const Receive = mongoose.model("Receive", receiveSchema);
+
+
+// const addFrom = async() => {
+//     let from1 = new From ({
+//         name:"Reetu didi",
+
+//     });
+
+//     let receive1 = await Receive.insertMany([
+//         { receiveName:"roma syal" ,message:"Hello, what are you doing??" },
+//     ]);
+   
+// }
+
+const addData = async() => {
+    let from1 = new From ({
+            name:"Reetu didi",
+         });
+      let res =  await from1.save();
+      console.log(res);
+
+    let receive1 = new Receive({
+        receiveName :"rajia",
+        message:"hello , how are you? what are you doing??",
+    });
+   
+   receive1.from = from1;
+ 
+  let receive = await receive1.save();
+  console.log(receive);
+
+  let from = await from1.save();
+  console.log(from);
+};
+//addData();
+
+const delRec = async() => {
+    let data = await Receive.findByIdAndDelete("658b5949c81f16795030e3e9");
+    console.log(data);
+}
+//delRec();
