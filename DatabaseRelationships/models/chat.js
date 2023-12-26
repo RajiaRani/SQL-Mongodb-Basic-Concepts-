@@ -40,6 +40,19 @@ const Receive = mongoose.model("Receive", receiveSchema);
 // }
 
 
+const addData3 = async() => {
+    let from3 = await From.findOne({name:"Reetu didi"});
+   let receive3 = new Receive({
+    receiveName:"roma",
+    message:"hello.. please pick my phone its urgent!!!!",
+   });
+
+   receive3.from = from3;
+   await receive3.save();
+}
+addData3();
+
+
 const addData2 = async() => {
    let from2 = await From.findOne({name:"Reetu didi"});
    let receive2 = new Receive ({
@@ -50,7 +63,9 @@ const addData2 = async() => {
    let data = await receive2.save();
    console.log(data);
 }
-addData2();
+//addData2();
+
+
 
 const addData = async() => {
     let from1 = new From ({
