@@ -35,6 +35,23 @@ const postSchema = new Schema({
 const Instauser = mongoose.model("Instauser", userSchema);
 const Instapost = mongoose.model("Instapost", postSchema);
 
+const addData4 = async () => {
+    let user1 = await Instauser.findOne({ name: "Riya Rajput" });
+    let post4 = new Instapost(
+        {
+            caption: "God is everything..",
+            likes: 1045,
+            share: 108,
+            mention: ["@radhikasharma"],
+        }
+    );
+
+    post4.user = user1;
+    await post4.save();
+};
+//addData4();
+
+
 const addData3 = async () => {
     let user1 = await Instauser.findOne({ name: "Riya Rajput" });
     let post3 = new Instapost(
@@ -49,7 +66,7 @@ const addData3 = async () => {
     post3.user = user1;
     await post3.save();
 };
-addData3();
+//addData3();
 
 
 const addData2 = async () => {
@@ -67,6 +84,17 @@ const addData2 = async () => {
 };
 //addData2();
 
+const addUser = async () => {
+    let user2 = new Instauser({
+        name: "i_am_chenchureddy",
+        email: "chenchureddy@gmail.com",
+        gender: "male",
+        age: 26,
+    });
+    let res = await user2.save();
+    console.log(res);
+};
+addUser();
 
 const addData = async () => {
     let user1 = new Instauser({
@@ -75,14 +103,6 @@ const addData = async () => {
         gender: "female",
         age: 23,
     });
-    // let post = new Instapost ({
-    //     caption:"lets, start new journey :) ",
-    //     likes:102,
-    //     share:2,
-    //     mention:["@rohitsharma", "@helloworld", "@javascriptconcepts", "@rajiasyal", "@romasyal", "@i_amchenchureddy"],
-    // });
-
-    // post.user = user1;
     let res = await user1.save();
     console.log(res);
 };
