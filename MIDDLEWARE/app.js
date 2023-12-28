@@ -21,6 +21,19 @@ const app = express();
 // });
 
 
+//using token as a middleware
+const checkToken = (req, res, next) => {
+  let {token} = query;
+  if( token == "itsme"){
+    next();
+  };
+  res.send("Opps!! Please enter the correct information");
+};
+
+app.get("/info", (req,res) => {
+    res.send("Here you information");
+});
+
 //token access for protection
 app.use("/api", (req,res,next) => {
     let { token }  = req.query;
