@@ -30,6 +30,15 @@ app.use((req, res, next) => {
     next();
 });
 
+//middleware for particular case
+app.use("/random", (req,res,next) => {
+   console.log("i am only for Random route");
+   next();
+});
+
+
+
+
 
 
 //home page
