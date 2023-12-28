@@ -20,22 +20,27 @@ const app = express();
 //     next();
 // });
 
-app.use((req,res,next) => {
-    console.log(req);
+app.use((req, res, next) => {
+    //console.log(req);
+    // console.log(req.method); // yaha se hum request ka method pata karte hai
+    // console.log(req.method, req.path, req.hostname, req.hash, req.protocol, req.href, req.pathname);
+    // req.time = Date.now();
+    req.time = new Date(Date.now()).toString(); //correct present time show karne ke liye
+    console.log(req.method, req.path, req.time);
     next();
 });
 
 
 
 //home page
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
     res.send("Hi I am Root");
 });
 
 //random midlleware
-app.use("/random", (req,res) => {
+app.use("/random", (req, res) => {
     res.send("this is a random page!!");
- });
+});
 
 
 app.listen(8080, () => {
