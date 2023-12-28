@@ -30,15 +30,12 @@ app.use((req, res, next) => {
     next();
 });
 
+
 //middleware for particular case
 app.use("/random", (req,res,next) => {
    console.log("i am only for Random route");
    next();
 });
-
-
-
-
 
 
 //home page
@@ -51,6 +48,11 @@ app.use("/random", (req, res) => {
     res.send("this is a random page!!");
 });
 
+//404 page ke liye
+app.use((req,res) => {
+    res.send(404);
+    res.send(" Opps!! Page Not Found!!");
+});
 
 app.listen(8080, () => {
     console.log("server listening to post 8080");
