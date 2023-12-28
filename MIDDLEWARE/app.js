@@ -26,6 +26,14 @@ app.get("/api", (req,res)=> {
     res.send(data);
 });
 
+app.use("/api", (req,res,next) => {
+    let { token }  = req.query;
+    if( token == "give access"){
+        next();
+    };
+    res.send("Acess Denied");
+});
+
 app.use((req, res, next) => {
     //console.log(req);
     // console.log(req.method); // yaha se hum request ka method pata karte hai
