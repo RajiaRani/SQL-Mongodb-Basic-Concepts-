@@ -41,7 +41,7 @@ const Customer = mongoose.model("Customer", customerSchema);
 
 //--------------- deletion handling------------
 const delCustomer = async () => {
-    let delData = await Customer.findByIdAndDelete("658a689c4e1df072632ecd46");
+    let delData = await Customer.findByIdAndDelete("658ccee47486c3c1f96ddac8");
     console.log(delData);
 }
 delCustomer();
