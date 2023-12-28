@@ -21,7 +21,7 @@ const app = express();
 // });
 
 
-//token access
+//token access for protection
 app.use("/api", (req,res,next) => {
     let { token }  = req.query;
     if( token == "giveaccess"){
