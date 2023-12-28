@@ -33,18 +33,30 @@ const postSchema = new Schema({
 });
 
 
-userSchema.post("findOneAndDelete", async (instauser) => {
-    if (instauser.instapost.length) {
-         let result = await Instapost.deleteMany({
-             _id:
-               { $in: instauser.instapost },
-         });
-       console.log(result);
-   }
+// userSchema.post("findOneAndDelete", async (post) => {
+//     if (post.user) {
+//          let result = await Instauser.deleteMany({
+//              _id:{ $in:[post.user]},
+//          });
+//        console.log(result);
+//    }
 
- });
+//  });
 
- 
+postSchema.post("findOneAndDelete", async (post) => {
+    try {
+        if (post && post.user) {
+            let result = await Instauser.deleteMany({
+                _id: { $in: [post.user] },
+            });
+            console.log(result);
+        }
+    } catch (error) {
+        console.error("Error deleting related documents:", error);
+    }
+});
+
+
 const Instauser = mongoose.model("Instauser", userSchema);
 const Instapost = mongoose.model("Instapost", postSchema);
 
@@ -63,7 +75,7 @@ const Instapost = mongoose.model("Instapost", postSchema);
 
 //---------------------- deletion-----------
 const delData = async () => {
-    let delUser = await Instauser.findByIdAndDelete("'658b715e641e5293f77e35aa");
+    let delUser = await Instauser.findByIdAndDelete("658b715e641e5293f77e35aa");
     console.log(delUser);
 };
 delData();
