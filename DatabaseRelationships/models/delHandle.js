@@ -31,17 +31,26 @@ const postSchema = new Schema({
         ref: "Instauser",
     },
 });
+// userSchema.pre("findOneAndDelete", async() => {
+//     console.log("Pre Middleware");
+// });
 
 
-//  postSchema.post("findOneAndDelete", async (post) => {
-//     if (post.user) {
-//          let result = await Instauser.deleteMany({
-//              _id:{ $in:[post.user]},
-//           });
-//         console.log(result);
-//     }
+//  userSchema.post("findOneAndDelete", async(delUser)=> {
+//     console.log(delUser);
+//  })
 
-//   });
+
+ postSchema.post("findOneAndDelete", async (user) => {
+   if (user.post) {
+         let result = await Instapost.deleteMany({
+             _id:{ $in:user.post},
+           });
+         console.log(result);
+     }
+
+  });
+
 
 // postSchema.post("findOneAndDelete", async (post) => {
 //     try {
@@ -61,21 +70,10 @@ const Instauser = mongoose.model("Instauser", userSchema);
 const Instapost = mongoose.model("Instapost", postSchema);
 
 
-// userSchema.pre("findOneAndDelete", async() => {
-//     console.log("Pre Middleware");
-// });
-
-
-
-
-
- userSchema.post("findOneAndDelete", async(delUser)=> {
-    console.log(delUser);
- })
 
 //---------------------------- deletion ----------------------------
 const delData = async () => {
-    let delUser = await Instapost.findByIdAndDelete("658cc872f6caf317e86ec6d3");
+    let delUser = await Instauser.findByIdAndDelete("658cc8587855be086cc49b46");
     console.log(delUser);
 };
 delData();
