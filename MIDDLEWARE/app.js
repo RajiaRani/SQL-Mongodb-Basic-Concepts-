@@ -20,6 +20,12 @@ const app = express();
 //     next();
 // });
 
+
+//token access
+app.get("/api", (req,res)=> {
+    res.send(data);
+});
+
 app.use((req, res, next) => {
     //console.log(req);
     // console.log(req.method); // yaha se hum request ka method pata karte hai
