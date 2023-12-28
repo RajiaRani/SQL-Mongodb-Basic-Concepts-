@@ -32,8 +32,42 @@ const postSchema = new Schema({
     },
 });
 
+
+userSchema.post("findOneAndDelete", async (instauser) => {
+    if (instauser.instapost.length) {
+         let result = await Instapost.deleteMany({
+             _id:
+               { $in: instauser.instapost },
+         });
+       console.log(result);
+   }
+
+ });
+
+ 
 const Instauser = mongoose.model("Instauser", userSchema);
 const Instapost = mongoose.model("Instapost", postSchema);
+
+
+// userSchema.pre("findOneAndDelete", async() => {
+//     console.log("Pre Middleware");
+// });
+
+
+
+
+
+// userSchema.post("findOneAndDelete", async(delUser)=> {
+//     console.log(delUser);
+// })
+
+//---------------------- deletion-----------
+const delData = async () => {
+    let delUser = await Instauser.findByIdAndDelete("'658b715e641e5293f77e35aa");
+    console.log(delUser);
+};
+delData();
+
 
 const addData4 = async () => {
     let user1 = await Instauser.findOne({ name: "Riya Rajput" });
@@ -94,7 +128,7 @@ const addUser = async () => {
     let res = await user2.save();
     console.log(res);
 };
-addUser();
+//addUser();
 
 const addData = async () => {
     let user1 = new Instauser({
