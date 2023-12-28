@@ -3,6 +3,8 @@ const app = express();
 
 //sample middleware
 app.use((req,res) => {
+    let {query} = req.query;
+    console.log(query);
     console.log("Hii. I am middleware");
     res.send("middleware finished.")
 });
