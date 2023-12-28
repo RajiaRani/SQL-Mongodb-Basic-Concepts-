@@ -30,7 +30,7 @@ const checkToken = (req, res, next) => {
   res.send("Opps!! Please enter the correct information");
 };
 
-app.get("/info", (req,res) => {
+app.get("/info", checkToken,(req,res) => {
     res.send("Here you information");
 });
 
