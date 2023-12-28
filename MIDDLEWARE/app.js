@@ -28,7 +28,7 @@ app.get("/api", (req,res)=> {
 
 app.use("/api", (req,res,next) => {
     let { token }  = req.query;
-    if( token == "give access"){
+    if( token == "giveaccess"){
         next();
     };
     res.send("Acess Denied");
