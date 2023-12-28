@@ -13,7 +13,12 @@ app.use((req,res,next) => {
 app.use((req,res,next) => {
     console.log("Hii.I am 2nd Middleware.");
     next();
-})
+});
+
+app.use((req,res,next) => {
+    console.log("hii i am 3rd middleware");
+    next();
+});
 
 //home page
 app.get("/", (req,res) => {
