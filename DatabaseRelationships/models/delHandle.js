@@ -73,12 +73,12 @@ const Instapost = mongoose.model("Instapost", postSchema);
     console.log(delUser);
  })
 
-//---------------------- deletion-----------
+//---------------------------- deletion ----------------------------
 const delData = async () => {
-    let delUser = await Instauser.findByIdAndDelete("658cc5f1429316e6e7189ec5");
+    let delUser = await Instapost.findByIdAndDelete("658cc872f6caf317e86ec6d3");
     console.log(delUser);
 };
-//delData();
+delData();
 
 
 const addData4 = async () => {
@@ -140,7 +140,7 @@ const addUser = async () => {
     let res = await user2.save();
     console.log(res);
 };
-addUser();
+//addUser();
 
 const addData = async () => {
     let user1 = new Instauser({
