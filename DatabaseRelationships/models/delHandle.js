@@ -33,28 +33,28 @@ const postSchema = new Schema({
 });
 
 
-// userSchema.post("findOneAndDelete", async (post) => {
+//  postSchema.post("findOneAndDelete", async (post) => {
 //     if (post.user) {
 //          let result = await Instauser.deleteMany({
 //              _id:{ $in:[post.user]},
-//          });
-//        console.log(result);
-//    }
+//           });
+//         console.log(result);
+//     }
 
-//  });
+//   });
 
-postSchema.post("findOneAndDelete", async (post) => {
-    try {
-        if (post && post.user) {
-            let result = await Instauser.deleteMany({
-                _id: { $in: [post.user] },
-            });
-            console.log(result);
-        }
-    } catch (error) {
-        console.error("Error deleting related documents:", error);
-    }
-});
+// postSchema.post("findOneAndDelete", async (post) => {
+//     try {
+//         if (post && post.user) {
+//             let result = await Instauser.deleteMany({
+//                 _id: { $in: [post.user] },
+//             });
+//             console.log(result);
+//         }
+//     } catch (error) {
+//         console.error("Error deleting related documents:", error);
+//     }
+// });
 
 
 const Instauser = mongoose.model("Instauser", userSchema);
@@ -69,16 +69,16 @@ const Instapost = mongoose.model("Instapost", postSchema);
 
 
 
-// userSchema.post("findOneAndDelete", async(delUser)=> {
-//     console.log(delUser);
-// })
+ userSchema.post("findOneAndDelete", async(delUser)=> {
+    console.log(delUser);
+ })
 
 //---------------------- deletion-----------
 const delData = async () => {
-    let delUser = await Instauser.findByIdAndDelete("658b715e641e5293f77e35aa");
+    let delUser = await Instauser.findByIdAndDelete("658cc5f1429316e6e7189ec5");
     console.log(delUser);
 };
-delData();
+//delData();
 
 
 const addData4 = async () => {
@@ -140,7 +140,7 @@ const addUser = async () => {
     let res = await user2.save();
     console.log(res);
 };
-//addUser();
+addUser();
 
 const addData = async () => {
     let user1 = new Instauser({
