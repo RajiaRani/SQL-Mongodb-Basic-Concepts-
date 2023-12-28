@@ -22,10 +22,6 @@ const app = express();
 
 
 //token access
-app.get("/api", (req,res)=> {
-    res.send(data);
-});
-
 app.use("/api", (req,res,next) => {
     let { token }  = req.query;
     if( token == "giveaccess"){
@@ -34,15 +30,19 @@ app.use("/api", (req,res,next) => {
     res.send("Acess Denied");
 });
 
-app.use((req, res, next) => {
-    //console.log(req);
-    // console.log(req.method); // yaha se hum request ka method pata karte hai
-    // console.log(req.method, req.path, req.hostname, req.hash, req.protocol, req.href, req.pathname);
-    // req.time = Date.now();
-    req.time = new Date(Date.now()).toString(); //correct present time show karne ke liye
-    console.log(req.method, req.path, req.time);
-    next();
+app.get("/api", (req,res)=> {
+    res.send(data);
 });
+
+// app.use((req, res, next) => {
+//     //console.log(req);
+//     // console.log(req.method); // yaha se hum request ka method pata karte hai
+//     // console.log(req.method, req.path, req.hostname, req.hash, req.protocol, req.href, req.pathname);
+//     // req.time = Date.now();
+//     req.time = new Date(Date.now()).toString(); //correct present time show karne ke liye
+//     console.log(req.method, req.path, req.time);
+//     next();
+// });
 
 
 //middleware for particular case
