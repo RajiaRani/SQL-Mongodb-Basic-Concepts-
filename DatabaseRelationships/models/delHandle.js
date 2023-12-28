@@ -43,7 +43,7 @@ const postSchema = new Schema({
 
  postSchema.post("findOneAndDelete", async (user) => {
    if (user.post) {
-         let result = await Instapost.deleteMany({
+         let result = await Instauser.deleteMany({
              _id:{ $in:user.post},
            });
          console.log(result);
@@ -73,14 +73,14 @@ const Instapost = mongoose.model("Instapost", postSchema);
 
 //---------------------------- deletion ----------------------------
 const delData = async () => {
-    let delUser = await Instauser.findByIdAndDelete("658cc8587855be086cc49b46");
+    let delUser = await Instapost.findByIdAndDelete("658cd209f2862294cdf301bc");
     console.log(delUser);
 };
 delData();
 
 
 const addData4 = async () => {
-    let user1 = await Instauser.findOne({ name: "Riya Rajput" });
+    let user1 = await Instauser.findOne({ name: "i_am_chenchureddy" });
     let post4 = new Instapost(
         {
             caption: "God is everything..",
@@ -93,7 +93,7 @@ const addData4 = async () => {
     post4.user = user1;
     await post4.save();
 };
-//addData4();
+addData4();
 
 
 const addData3 = async () => {
