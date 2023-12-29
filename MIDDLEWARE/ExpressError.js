@@ -1,10 +1,10 @@
-const { model } = require("mongoose");
 
 class ExpressError extends Error {
     constructor (status, message) {
+        super();
         this.status = status;
         this.message = message;
     }
 }
-model.exports = ExpressError;
+module.exports = ExpressError;
 

@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const ExpressError = require("./ExpressError");
 
 //sample middleware
 // app.use((req,res,next) => {
@@ -19,7 +20,17 @@ const app = express();
 //     console.log("hii i am 3rd middleware");
 //     next();
 // });
+const checkPass = (req,res,next) => {
+    let {pass} = req.query;
+    if( pass == "india123"){
+        next();
+    }
+    throw new ExpressError(401,"Please enter the valid password!!");
+};
 
+app.get("/pass",checkPass,(req,res) => {
+    res.send("correct password");
+});
 
 //using token as a middleware
 const checkToken = (req, res, next) => {
