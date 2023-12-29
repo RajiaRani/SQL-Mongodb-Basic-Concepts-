@@ -23,7 +23,7 @@ const app = express();
 
 //using token as a middleware
 const checkToken = (req, res, next) => {
-  let {token} = query;
+  let {token} = req.query;
   if( token == "itsme"){
     next();
   };
@@ -35,17 +35,17 @@ app.get("/info", checkToken,(req,res) => {
 });
 
 //token access for protection
-app.use("/api", (req,res,next) => {
+ app.use("/api", (req,res,next) => {
     let { token }  = req.query;
     if( token == "giveaccess"){
         next();
     };
     res.send("Acess Denied");
-});
+ });
 
-app.get("/api", (req,res)=> {
-    res.send(data);
-});
+ app.get("/api", (req,res)=> {
+     res.send(data);
+ });
 
 // app.use((req, res, next) => {
 //     //console.log(req);
