@@ -111,6 +111,7 @@ app.get("/", (req,res) => {
 //Error Handling Middleware
 app.use((err,req,res,next) => {
   let { status = 500, message="Some Error Occurs"} = err;
+  res.status(status) .send(message);
 });
 
 
