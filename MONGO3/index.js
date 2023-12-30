@@ -58,6 +58,7 @@ app.get("/chats/:id", async(req,res) => {
 });
 
 app.get("/chats/new",(req,res) =>{
+    throw new ExpressError(500, "Page Not Found!!");
     res.render("new.ejs");
 });
 //post request
