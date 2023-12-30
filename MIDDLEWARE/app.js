@@ -99,7 +99,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/admin", (req,res) => {
- throw new ExpressError
+ throw new ExpressError (404, " Access to admin is forbidden")
 });
 
 //random midlleware
