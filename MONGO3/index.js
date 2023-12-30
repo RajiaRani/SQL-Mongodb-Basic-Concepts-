@@ -1,17 +1,17 @@
 const express = require("express");
 const app = express();
-
 const path = require("path");
+const mongoose = require("mongoose");
+const Chat = require("./models/chat.js"); // require the chat file
+const methodOverride = require("method-override");
+const ExpressError = require("./ExpressError");
+
 app.set("views", path.join(__dirname,"/views"));
 app.set("view engine", "ejs");
-
-const Chat = require("./models/chat.js"); // require the chat file
-
-const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
 
-const mongoose = require("mongoose");
+
 main()
 .then(() => {
     console.log("connection successfull");
