@@ -20,6 +20,7 @@ const ExpressError = require("./ExpressError");
 //     console.log("hii i am 3rd middleware");
 //     next();
 // });
+
 const checkPass = (req,res,next) => {
     let {pass} = req.query;
     if( pass == "india123"){
@@ -57,6 +58,22 @@ app.get("/info", checkToken,(req,res) => {
  app.get("/api", (req,res)=> {
      res.send(data);
  });
+
+
+app.get("/err", (req,res) => {
+    abcd==abcd;
+});
+// app.use((err, req, res, next) => {
+//     console.log("--------- ERROR -----------------");
+//     //next(err);
+//     res.send(err);
+// });
+app.use((err,req,res,next) => {
+
+    let {status=500, message="my default message"} = err;//set the default status and message
+    res.status(status).send(message);
+});
+
 
 // app.use((req, res, next) => {
 //     //console.log(req);
