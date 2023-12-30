@@ -99,7 +99,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/admin", (req,res) => {
-
+ throw new
 });
 
 //random midlleware
