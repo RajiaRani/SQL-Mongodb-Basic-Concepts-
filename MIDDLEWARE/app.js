@@ -98,10 +98,13 @@ app.get("/", (req, res) => {
     res.send("Hi I am Root");
 });
 
+app.get("/admin", (req,res) => )
+
 //random midlleware
 app.use("/random", (req, res) => {
     res.send("this is a random page!!");
 });
+
 
 //404 page ke liye
 app.use((req,res) => {
