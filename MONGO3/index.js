@@ -75,7 +75,7 @@ app.get("/chats/new",(req,res) =>{
 //NEW - SHOW ROUTE
 app.get("/chats/:id", async(req,res) => {
     let {id} = req.params;
-    let chat = await
+    let chat = await Chat.findById(id);
 });
 
 app.get("/chats/:id/edit", async(req,res) =>{
