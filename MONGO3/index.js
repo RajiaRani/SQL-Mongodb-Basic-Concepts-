@@ -73,9 +73,10 @@ app.get("/chats/new",(req,res) =>{
  });
 
 //NEW - SHOW ROUTE
-app.get("/chats/:id", (req,res) => {
+app.get("/chats/:id", async(req,res) => {
     let {id} = req.params;
-})
+    let chat = await
+});
 
 app.get("/chats/:id/edit", async(req,res) =>{
     let { id } = req.params;
